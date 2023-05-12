@@ -15,17 +15,9 @@ def parse_statement(csv_file):
         pandas.core.frame.DataFrame: A parsed and organized dataframe for the given statement
     """
 
-    if bank_name.SCOTIABANK in csv_file:
-        return extract_scotiabank_cc(csv_file)
-    elif bank_name.BMO in csv_file:
-        return extract_bmo_cc(csv_file)
-    else:
-        raise("file type not handled")
+    # Update as main function handler
+    return extract_bmo_cc(csv_file)
 
-
-# def extract_checking(csv_file):
-#     checking = pd.read_csv(filepath_or_buffer=csv_file, sep=',', names=[ "date", "amount", "null", "type", "place" ], keep_default_na=False)
-#     return checking
 
 
 def extract_scotiabank_cc(csv_file):
@@ -68,6 +60,7 @@ def extract_bmo_cc(csv_file):
         \nPlease check the content of {os.path.basename(csv_file)}")
         return bmo_df
     bmo_df = spending_as_pos_value(bmo_df, bank_name.BMO)
+    print(bmo_df)
     return bmo_df
 
 
